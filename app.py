@@ -32,18 +32,14 @@ def Show_key(id):
     return jsonify(req)
 
 
-# def setname(name):
-#     db.set('name',name)
-#     return 'Name updated.'
-
  # Create 
 @app.route('/', methods=['POST'])
 def add_animal():
     id = request.json['id'] #แปลงค่าเป็น js 
-    animalname = request.json['animalname']
+    name = request.json['name']
     type = request.json['type']
     
-    user = {"id":id, "animalname":animalname, "type":type}
+    user = {"id":id, "name":name, "type":type}
 
     db.hmset(id, user)
     return jsonify(user)
@@ -53,9 +49,9 @@ def add_animal():
 @app.route('/<Key>', methods=['PUT'])
 def update_animal(Key):
 
-    animalname = request.json['animalname']
+    name = request.json['name']
     type = request.json['type']
-    user = {"id":Key, "animalname":animalname, "type":type}
+    user = {"id":Key, "name":name, "type":type}
     db.hmset(Key, user)
     return jsonify(user)
 
@@ -65,7 +61,7 @@ def update_animal(Key):
 @app.route('/<Key>', methods=['DELETE'])
 def delete_animal(Key):
     db.delete(Key)
-    return "GOOD"
+    return "DELETE"
 
 if __name__ == '__main__':
     app.run()
