@@ -8,8 +8,8 @@ app = Flask(__name__)
 
 
 db=redis.StrictRedis(
-        host='node9151-advweb-13.app.ruk-com.cloud',
-        port=11148,
+        host='10.100.2.128',
+        port=6379,
         password='YCTydi14237',
         decode_responses=True)
 
